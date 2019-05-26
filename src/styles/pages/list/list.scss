@@ -1,0 +1,419 @@
+@import "../base";
+@import "../home/home.scss";
+
+.content{
+    padding: 10px 0;
+    .conTop{
+        height: 14px;
+        margin: 10px 0 20px;
+    };
+    .conCenter{
+        position: relative;
+        .smallImg{
+            position: absolute;
+            background:url("http://localhost:9999/images/160c3c45bab8753153061ff1810e8803.png") center; 
+            background-size: cover; 
+            top: 0; 
+            left:0; 
+            width:450px; 
+            height:450px;
+            border: 1px solid #999;
+            .smallCursor{
+                position: absolute; 
+                left: 0; 
+                top: 0; 
+                display:none;
+                width: 225px; 
+                height: 225px; 
+                background: rgba(255,255,255,0.5);
+                border: 1px solid #999;
+            };
+        };
+        .bigCursor{
+            display:none;
+            position: absolute; 
+            height:550px; 
+            width:550px; 
+            left: 453px; 
+            top: 1px; 
+            background: rgba(200,198,255,0.1); 
+            overflow: hidden;
+            .bigImg{
+                position: absolute; 
+                left: 0px; 
+                top: 0px;
+                z-index: 100;
+            };
+        };
+        .conDetail{
+            margin-left: 29px;
+            width: 719px;
+            .prodName{
+                height: 24px;
+                font-size: 16px;
+                margin-top: 6px;
+                line-height: 24px;
+                position: relative;
+                .pname{
+                    float: left;
+                    font-weight: bold;
+                    color: #333;
+                    font-family: 'Microsoft Yahei';
+                };
+                .pnum{
+                    float: left;
+                    text-align: left;
+                    font-weight: bold;
+                    color: #333;
+                    font-family: 'Microsoft Yahei';
+                };
+                .more{
+                    float: right;
+                    line-height: 20px;
+                    color: #999;
+                    font-size: 12px;
+                    font-weight: normal;
+                    font-family: Verdana;
+                    a{
+                        color: #d70057;
+                        margin-left: 5px;
+                        line-height: 20px;
+                    };
+                };
+            };
+            .prodPrice{
+                color: #999;
+                margin-top: 14px;
+                display: inline-block;
+                width: 719px;
+                background: #f6f6f6;
+                position: relative;
+                .price{
+                    height: 47px;
+                    padding: 7px 0 12px 0;
+                    border-bottom: 1px solid #e9e9e9;
+                    .price_1{
+                        color: #999;
+                        padding: 0 8px 0 0;
+                        .price_txt1{
+                            display: inline-block;
+                            padding-left: 20px;
+                            width: 56px;
+                            color: #535353;
+                        };
+                        .colored{
+                            color: #D70057;
+                            position: relative;
+                            top: 2px;
+                            font-size: 24px;
+                            font-family: 'Microsoft Yahei';
+                            .price_con{
+                                color: #D70057;
+                                font-size: 36px;
+                                padding-left: 6px;
+                            };
+                        };
+                        .price_txt2{
+                            text-decoration: line-through;
+                            margin: 0 10px;
+                            color: #999;
+                            font-size: 14px;
+                        };
+                    };
+                    .price_2{
+                        height: 20px;
+                        float: left;
+                        color: #fff;
+                        margin-top: 19px;
+                        border-radius: 24px;
+                        line-height: 20px;
+                        padding: 0 12px;
+                        background: #f66b8c;
+                    };
+                    .comment{
+                        
+                        float: right;
+                        .cmtxt{
+                            line-height: 27px;
+                            font-size: 12px;
+                            color: #535353;
+                        };
+                        .cmnum{
+                            text-align: center;
+                            color: #d70057;
+                            text-decoration: underline;
+                        };
+                    };
+                };
+                .lastTime{
+                    margin-top: 10px;
+                    height: 20px;
+                    color: #fff;
+                    line-height: 20px;
+                    .time_txt{
+                        padding-left: 20px;
+                        width: 56px;
+                        color: #535353;
+                        font-size: 12px;
+                    };
+                };
+                .active{
+                    padding-top: 12px;
+                    height: 32px;
+                    .active_txt{
+                        float: left;
+                        padding-top: 5px;
+                        padding-left: 20px;
+                        width: 56px;
+                        text-align: left;
+                        line-height: 20px;
+                        color: #535353;
+                    };
+                    .active_class{
+                        float: left;
+                        background: #d70057;
+                        color: #fff;
+                        padding: 0 12px;
+                        height: 22px;
+                        line-height: 20px;
+                        display: inline-block;
+                        margin: 5px 10px 5px 0;
+                    };
+                    .active_zc{
+                        float: left;
+                        line-height: 20px;
+                        color: #535353;
+                        font-family: 'SimSun';
+                        margin: 5px 10px 5px 0;
+                    };
+                };
+                .count{
+                    height: 27px;
+                    padding: 5px 0 16px 76px;
+                    .count_txt1{
+                        float: left;
+                        background: #d70057;
+                        color: #fff;
+                        padding: 0 12px;
+                        height: 22px;
+                        line-height: 20px;
+                        display: inline-block;
+                        margin: 5px 10px 5px 0;
+                    };
+                    .count_txt2{
+                        line-height: 30px;
+                        float: left;
+                        padding-left: 10px;
+                        color: #666;
+                        font-family: 'SimSun';
+                        a{
+                            color: #a46c01;
+                        };
+                    };
+                };
+            };
+            .prodColor {
+                height: 71px;
+                margin-top: 16px;
+                .color_txt{
+                    text-align: left;
+                    color: #535353;
+                    font-size: 12px;
+                    float: left;
+                    padding-top: 2px;
+                    padding-left: 20px;
+                    width: 56px;
+                };
+                .colorImg{
+                    display: block;
+                    width: 59px;
+                    height: 59px;
+                    float: left;
+                    border: 1px solid #d70057;
+                    margin-right: 10px;
+                    margin-bottom: 10px;
+                    position: relative;
+                    i {
+                        display: block;
+                        position: absolute;
+                        z-index: 9;
+                        right: 0;
+                        bottom: 0;
+                        width: 16px;
+                        height: 16px;
+                        background: url(http://localhost:9999/images/sizeselected-thumb.png) no-repeat;
+                    }
+                };
+            }
+            .prodSize{
+                .sizeTable{
+                    height: 18px;
+                    padding-right: 20px;
+                    text-align: left;
+                    .sizeTable_txt{
+                        text-align: left;
+                        color: #535353;
+                        font-size: 12px;
+                        float: left;
+                        padding-top: 2px;
+                        padding-left: 20px;
+                        width: 56px;
+                    };
+                    a{
+                        color: #d70057;
+                        line-height: 1em;
+                    };
+                };
+                .selectSize{
+                    margin-left: 76px;
+                    padding-top: 10px;
+                    height: 36px;
+                    li{
+                        float: left;
+                        margin-right: 10px;
+                        padding-bottom: 10px;
+                        white-space: nowrap;
+                        .selectCurArea{
+                            a{
+                                display: block;
+                                border: 1px solid #ccc;
+                                position: relative;
+                                background: white;
+                                .text{
+                                    display: block;
+                                    padding: 0 15px;
+                                    color: #333;
+                                    line-height: 24px;
+                                };
+                                i {
+                                    display: none;
+                                    position: absolute;
+                                    z-index: 9;
+                                    right: 0;
+                                    bottom: 0;
+                                    width: 16px;
+                                    height: 16px;
+                                    background: url(http://localhost:9999/images/sizeselected-thumb.png) no-repeat;
+                                }
+                            };
+                        };
+                    };
+                };
+                .sizeCount{
+                    text-align: left;
+                    height: 30px;
+                    .sizeCount_txt{
+                        text-align: left;
+                        color: #535353;
+                        font-size: 12px;
+                        float: left;
+                        padding-top: 5px;
+                        padding-left: 20px;
+                        width: 56px;
+                    };
+                    .input-group{
+                            float: left;
+                            span{
+                                width: 26px;
+                                height: 28px;
+                                cursor: pointer;
+                                text-align: center;
+                                line-height: 20px;
+                                font-weight: bold;
+                                font-size: 14px;
+                                color: #8c8b8b;
+                                background: #f9f9f9;
+                                line-height: 30px;
+                                border: 1px solid #b5b5b5;
+                                display: inline-block;
+                                vertical-align: top;
+                            };
+                            .minus{
+                                border-right: 0;
+                            };
+                            .add{
+                                border-left: 0;
+                            };
+                            input{
+                                vertical-align: top;
+                                text-align: center;
+                                line-height: 28px;
+                                width: 30px;
+                                border: 0;
+                                height: 28px;
+                                border-top: 1px solid #b5b5b5;
+                                border-bottom: 1px solid #b5b5b5;
+                                margin: 0 -5px;
+                            };
+                    };
+                };
+                .cart{
+                    height: 50px;
+                    margin: 40px 0 0 76px;
+                    position: relative;
+                    .warning{
+                        opacity: 1;
+                        display: none;
+                        color: #e9e9e9;
+                        line-height: 20px;
+                        width: 100px;
+                        height: 20px;
+                        position: absolute;
+                        top: -30px;
+                        left: 50px;
+                        background-color: orangered;
+                    };
+                    .cartBtn{
+                        float: left;
+                        display: inline;
+                        .prodCartBtn{
+                            height: 50px;
+                            width: 250px;
+                            padding-left: 32px;
+                            border: 0;
+                            cursor: pointer;
+                            background: #d70057 url(http://0.js.al.okbuycdn.com/resources/images/v6/product/detail/cartbtnbg.png) 59px 17px no-repeat;
+                            color: #fff;
+                            text-align: center;
+                            line-height: 50px;
+                            font-family: 'Microsoft Yahei';
+                            font-size: 20px;
+                            border-radius: 1px;
+                        };
+                    };
+                    .store{
+                        float: left;
+                        margin: 17px 0 0 20px;
+                        height: 16px;
+                        line-height: 15px;
+                        color: #999;
+                        background: url(http://localhost:9999/images/wishstar.png) no-repeat;
+                        padding-left: 22px;
+                        .labledialog{
+                            color: #999;
+                        };
+                    };
+                };
+                .notice{
+                    text-align: left;
+                    height: 18px;
+                    margin: 20px 0 16px 76px;
+                    padding-left: 18px;
+                    line-height: 16px;
+                    color: #999;
+                    background: url(http://localhost:9999/images/pronotic.png) top left no-repeat;
+                };
+                .service{
+                        padding: 10px 0 10px 76px;
+                        width: 630px;
+                        height: 32px;
+                        border-color: #dcdcdc;
+                        border-width: 1px 0;
+                        border-style: dashed;
+                        background: url(http://localhost:9999/images/okservice.png) 72px 10px no-repeat;
+                    
+                };
+            };
+        };
+    };
+};

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>好乐买 正品鞋</title>
+    <link rel="stylesheet" type="text/css" href="../../styles/pages/login/login.css"/>
+    
+</head>
+
+<body>
+    <div class="top">
+        <div class="w1200">
+            <div class="logo fl">
+                <a href="http://localhost:9999/pages/home/home.html"><img src="http://localhost:9999/images/login_new_logo.png" alt=""></a>
+            </div>
+            <div class="top_list fr">
+                <span><i></i>天天低价</span>
+                <span><i></i>正品保障</span>
+                <span><i></i>15天退换货</span>
+                <span><i></i>评价晒单有礼</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="centerRegister">
+        <a class="center_bg" href="http://www.okbuy.com/sport"></a>   
+        <div class="w1200">
+            <div class="register">
+                <div class="tabHead">
+                    <span class="th_register">欢迎注册</span>
+                    <a href="http://localhost:9999/pages/login/login.html" class="th_login">登录</a>
+                </div>
+                <div class="tabBody">
+                    <div class="phoneNum">
+                        <input type="text" class="form-phoneNum" placeholder="请输入手机号">
+                        <span></span>
+                    </div>              
+                    <div class="phoneNumRule">
+                        <i></i>
+                        <span></span>
+                    </div>
+                    <div class="setCode">
+                        <input type="text" class="form-setCode" placeholder="请设置密码">
+                        <span></span>
+                        <span class="hidden"></span>
+                    </div>
+                    <div class="setCodeRule">
+                        <i></i>
+                        <span></span>
+                    </div>
+                     
+                    <div class="imgLogin ">
+                        <input type="text" class="form-imgLogin" placeholder="图形验证码">
+                        <span class="imgflag"></span>
+                        <span class="randomNum"><img src="" alt=""></span>
+                        
+                    </div>
+                    <div class="imgLoginRule">
+                        <i></i>
+                        <span></span>
+                    </div>
+                    <div class="tabRegister"></div> 
+                    
+                    <input type="submit" class="register_btn" id="loginformbtn" name="" value="注册" style="float:left">
+                    
+                </div>
+                <div class="tabFooter">
+                    注册即视为同意
+                    <a href="">好乐买隐私协议</a>
+                </div>
+            </div>   
+        </div>      
+    </div>
+
+    <div class="footer">Copyright © 2007-2019 OkBuy.com All Rights Reserved&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;天津好乐买信息技术有限公司&nbsp;&nbsp;津B2-20140020&nbsp;&nbsp;京公网安备&nbsp;110105006859</div>
+</body>
+<script src="../../scripts/libs/jquery-2.0.3.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+    
+    $(document).ready(function(){
+        let pass = {
+            phoneNum : false,
+            setCode : false,
+            imgLogin : false    
+        }
+        // 手机号输入框
+        // 规则：无错误提示，点击边框变蓝
+        //      有错误提示，边框点击和失去焦点都变红，span出现清除图标，若输入框为空提示“输入手机号”，若不为空，提示“输入正确11位手机号”
+        //      输入正确手机号，边框颜色恢复 ，显示成功图标
+        //      点击清除图标，清空输入框内容，并去除图标
+       $(".form-phoneNum").click(function() {
+           //console.log($(this).parent().siblings(".phoneNumRule").children("span").text());
+           if($(this).parent().siblings(".phoneNumRule").children("span").text() == "") {
+            $(this).css({border:"1px solid blue"})
+           };
+           
+       })
+       $(".form-phoneNum").blur(function() {
+            $(this).css({border:"1px solid red"});
+            let str = $(this).val().match(/^1(3|4|5|7|8)\d{9}$/);
+            //console.log($(this).val());
+            if($(this).val() === "") {
+                $(this).parent().siblings(".phoneNumRule").children("span").text("请输入手机号码！");
+                $(this).parent().siblings(".phoneNumRule").children("i").css({display:"inline-block"});
+            }else{
+                //console.log(!str);
+                if(!str){
+                    $(this).siblings().addClass("failure");
+                    $(this).parent().siblings(".phoneNumRule").children("i").css({display:"inline-block"});
+                    $(this).parent().siblings(".phoneNumRule").children("span").text("请输入正确的11位手机号码！");
+                    
+                }else{
+                    if(str!=null){
+                        $(this).siblings().addClass("success");
+                        $(this).parent().siblings(".phoneNumRule").children("i").css({display:"none"});
+                        $(this).parent().siblings(".phoneNumRule").children("span").text(""); 
+                        $(this).css({border:"1px solid #666"});
+                        pass.phoneNum = true;
+                    }   
+                }
+            }
+       });
+       $("span").click(function() {
+        //console.log( $(this).siblings())
+            if($("span").hasClass("failure") ){
+                $(this).siblings().val("");
+                $(this).removeClass("failure")
+            }  
+       })
+       //密码框
+       //   6到16个字符，数字/大写字母/小写字母/字符  四类  ,满足这个条件，失去焦点是显示成功图标
+       //强度：中：一类字符达到9个或两类及以上达到6个
+       //     强：两类字符达到12个或三类达到9个
+       
+    //    $(".form-setCode").click(function() {
+    //        console.log($(this).css("border"));
+    //        //console.log($(this).parent().siblings(".phoneNumRule").children("span").text());
+    //        if($(this).css("border") !== "1px solid red") {
+    //         $(this).css({border:"1px solid blue"})
+    //        };   
+    //    })
+
+    let Regex1 = new RegExp("^(?=.{9,})((?=.*[A-Z])|(?=.*[a-z])|(?=.*[0-9])|(?=.*\\W)).*$", "g")  //任意一类9个
+    let Regex2 = new RegExp("^(?=.{9,})(((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]))|((?=.*\\W)(?=.*[a-z])(?=.*[A-Z]))|((?=.*\\W)(?=.*[a-z])(?=.*[0-9]))|((?=.*\\W)(?=.*[A-Z])(?=.*[0-9]))).*$", "g")  //任意三类9个
+    let Regex3 = new RegExp("^(?=.{12,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*\\W))|((?=.*[a-z])(?=.*\\W))|((?=.*[0-9])(?=.*\\W))).*$", "g")  //任意两类12个
+    let Regex4 = new RegExp("^(?=.{6,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*\\W))|((?=.*[a-z])(?=.*\\W))|((?=.*[0-9])(?=.*\\W))).*$", "g")   //任意两类6个
+    
+
+       $(".form-setCode").change(function() {
+        if($(this).val().match(/^\w{6,16}$/)) {  
+            
+            $(this).next().addClass("success");
+            pass.setCode = true;
+            if($(this).val().match(Regex2)||$(this).val().match(Regex3)) {//显示强
+                $(this).parent().siblings(".setCodeRule").children("span").text("您的密码很安全");
+                $(this).parent().siblings(".setCodeRule").children("i").removeClass().addClass("img3");
+            }else if($(this).val().match(Regex1)||$(this).val().match(Regex4)) {//显示中
+                $(this).parent().siblings(".setCodeRule").children("span").text("可以使用三种以上的组合来提高密码强度");
+                $(this).parent().siblings(".setCodeRule").children("i").removeClass().addClass("img2");
+            }else if($(this).val().match(/^\w{1,}$/)) {//显示弱
+                $(this).parent().siblings(".setCodeRule").children("span").text("6-16个字符，建议由字母、数字、符号组合");
+                $(this).parent().siblings(".setCodeRule").children("i").removeClass().addClass("img1");
+            }
+        }else{
+            $(this).css({border:"1px solid red"});
+        }
+       });
+    //    $(".form-setCode").blur(function() {
+    //        if($(this).val().match(/^\w{6,16}$/)) {
+    //             $(this).next().addClass("success");
+    //        }else{
+    //             $(this).css({border:"1px solid red"});
+    //        }
+    //    })
+
+    //图形验证码
+        let randomStr = createCheckCode();
+        $(".randomNum").text(randomStr);
+
+        $(".form-imgLogin").change(function() {
+            if($(this).val() == randomStr) {
+                $(this).next().addClass("success");
+                pass.imgLogin = true;
+                $(this).parent().siblings(".imgLoginRule").children("i").css({display:"none"});
+                $(this).parent().siblings(".imgLoginRule").children("span").text(""); 
+            }else{
+                $(this).parent().siblings(".imgLoginRule").children("span").text("图形验证码不正确！");
+                $(this).parent().siblings(".imgLoginRule").children("i").css({display:"inline-block"});
+                $(this).next().removeClass("success");
+            }
+        })
+
+        //注册
+
+        $(".register_btn").click(function(){
+            let vals = Object.values(pass)
+            let res = vals.some(function(item){
+                return item==false;
+            });
+            
+            if(res) {
+                alert("error") //提示错误
+            } else {
+                let phoneValue = $(".form-phoneNum").val();
+                let passwordValue = $(".form-setCode").val();
+                //注册成功，本地存储注册信息
+                let jsonDate = JSON.parse(localStorage.getItem('userinfo'));
+                    let arr = [];
+                for(let i in jsonDate){
+                    arr.push(jsonDate[i]);
+                }
+                arr.push({
+                    phonenum : phoneValue,
+                    password :　passwordValue
+                })
+                localStorage.setItem('userinfo',JSON.stringify(arr)); 
+                setTimeout(function(){
+                    window.location = "login.html"
+                },2000)
+            }
+        })
+    });
+
+    
+
+    function createCheckCode() {
+        var arr = [0,0,0,0];
+        for (var i in arr) {
+            var asc = 0;
+            do{
+                asc = Math.ceil((Math.random()*74+48));
+            }while ((asc>=57&&asc<=65) || (asc>=90&&asc<=97));
+            arr[i] = String.fromCharCode(asc);
+        }
+        var str = arr.join("");
+        return str;
+    }
+
+</script>
+</html>

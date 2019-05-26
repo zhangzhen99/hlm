@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>好乐买 正品鞋</title>
+    <link rel="stylesheet" type="text/css" href="../../styles/pages/login/login.css"/>
+    
+</head>
+
+<body>
+    <div class="top">
+        <div class="w1200">
+            <div class="logo fl">
+                <a href="http://localhost:9999/pages/home/home.html"><img src="http://localhost:9999/images/login_new_logo.png" alt=""></a>
+            </div>
+            <div class="top_list fr">
+                <span><i></i>天天低价</span>
+                <span><i></i>正品保障</span>
+                <span><i></i>15天退换货</span>
+                <span><i></i>评价晒单有礼</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="center">
+        <a class="center_bg" href="http://www.okbuy.com/sport"></a>   
+        <div class="w1200">
+            <div class="login">
+                <div class="tabHead">
+                    <span class="account">账号登陆</span>
+                    <span class="code active">密码登录</span>
+                </div>
+                <div class="tabBody">
+                    <div class="LoginRule">
+                        <i></i>
+                        <span></span>
+                    </div>
+                    <div class="aLogin">
+                        <div class="login_txt">
+                            <input type="text" placeholder="已验证手机/邮箱/用户名" value="" class="valid" id="username" name="username">
+                        </div>
+                        <label class="error" id="usernameError"><i class="p_reg_note"></i><span></span></label>
+                        <!-- <p>密码：</p> -->
+                        <div class="login_txt">
+                            <input type="password" placeholder="密码" name="password" id="password" class="valid">
+                        </div>
+                        <label class="error" id="passwordError"><i class="p_reg_note"></i><span></span></label>
+                        <p>
+                            <input type="submit" class="login_btn_1" id="loginformbtn" value="登录" style="float:left">
+                        </p>
+                        <p class="loginRight_2"><a href="">忘记密码？</a></p>
+                    </div>
+                    <div class="cLogin active">                      
+                        <div class="scan_code">
+                            <!-- 扫码 -->
+                            <img class="code" src="http://localhost:9999/images/qrcode.png"><input type="hidden" id="str" value="ae8132f8f776814d0caa111dd901d65a">
+                            <img class="prompt" src="http://localhost:9999/images/login_new_prompt.jpg" alt="">
+                        </div>
+                        <div class="scan_word">请使用好乐买APP扫码登录</div>
+                        <div class="scan_down">
+                            <div class="down">
+                                <i class="downimg"></i>
+                                下载好乐买APP
+                            </div>
+                            <div class="down_code">
+                                <img src="http://localhost:9999/images/login_new_ewm.png" alt="">
+                            </div>
+                        </div>                    
+                    </div>
+                </div>
+                <div class="tabFooter">
+                    <ul class="fl">
+                        <li><a href=""></a></li>
+                        <li><a href=""></a></li>
+                        <li><a href=""></a></li>
+                        <li><a href=""></a></li>
+                        <li><a href=""></a></li>
+                    </ul>
+                    <a class="goregister fr" href="http://localhost:9999/pages/login/register.html">
+                        <i></i>注册有惊喜
+                    </a>
+                </div>
+            </div>   
+        </div>      
+    </div>
+
+    <div class="footer">Copyright © 2007-2019 OkBuy.com All Rights Reserved&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;天津好乐买信息技术有限公司&nbsp;&nbsp;津B2-20140020&nbsp;&nbsp;京公网安备&nbsp;110105006859</div>
+</body>
+<script src="../../scripts/libs/jquery-2.0.3.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+    $(document).ready(function(){
+        //账户登陆切换事件
+        $(".account").click(function() {
+            //console.log($(this));
+            $(this).addClass("active").siblings().removeClass("active");
+            var e = $(this).attr("class").substr(0, 1);
+            //console.log(e);
+            var f = $(this).parents().siblings().find("." + e + "Login");
+           
+            f.addClass("active").siblings().removeClass("active")
+        })
+        //扫码登陆切换事件
+        $(".code").click(function() {
+            //console.log($(this));
+            $(this).addClass("active").siblings().removeClass("active");
+            var e = $(this).attr("class").substr(0, 1);
+            //console.log(e);
+            var f = $(this).parents().siblings().find("." + e + "Login");
+           
+            f.addClass("active").siblings().removeClass("active")
+        })
+
+        //二维码事件
+        // $(".scan_code").mouseenter(function(){
+        //     $(".code").animate({left: 0}, 100);
+        //     $(".prompt").css({display:"inline"}).animate({opacity: 1}, 100);
+        // })
+        // $(".scan_code").mouseleave(function(){
+        //     $(".code").animate({left: 80}, 100);
+        //     $(".prompt").css({display:"none"}).animate({opacity: 0}, 100);
+        // })
+        $("body").delegate(".scan_code", "mouseenter", function() {
+            $(".code").animate({left: 0}, 100);
+            $(".prompt").css({display:"inline"}).animate({opacity: 1}, 100);
+        }).delegate(".scan_code", "mouseleave", function() {
+            $(".code").animate({left: 80}, 100);
+            $(".prompt").css({display:"none"}).animate({opacity: 0}, 100);
+        })
+      
+      //登陆验证
+        $("#loginformbtn").click(function() {
+            userValue = $("#username").val().replace(/(^\s*)|(\s*$)/g,'')
+            passValue = $("#password").val().replace(/(^\s*)|(\s*$)/g,'')
+            let obj = JSON.parse(localStorage.getItem("userinfo"));
+            let _length = obj.length;
+            let count = null;
+            for(let i=0;i<_length;i++){
+                if(userValue==obj[i].phonenum){
+                    count=i;
+                }
+            }
+            if(count==null && userValue!== "" && passValue!==""){
+                $(".LoginRule").children("i").css({
+                    display : "inline-block"
+                })
+                $(".LoginRule").children("span").text("账号密码不正确！")
+                return false;
+            }
+            if(passValue == obj[count].password){
+                localStorage.setItem("logined",userValue);
+                setTimeout(function(){
+                window.location = "../home/home.html"
+                },2000)
+                
+            }
+        })
+    });
+</script>
+</html>
